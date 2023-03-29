@@ -16,38 +16,18 @@
           </h1>
       </header>
       <main :class="wrapper">
-        <div :class ="slider">
+        <div @mouseover="stop" @mouseleave="play" :class ="slider">
           <div :class="slides">
-            <img v-for="(element) in images" :class="slide" :src="'./' + element.image"  alt="">
+            <img :src = "'./' + images[activeIndex].image" alt="images[activeIndex].title" class="slide active">
           </div>
           <div :class="thumbs">
             <img v-for="(element) in images" :class="thumb" :src="'./' + element.image"  alt="">
             <div :class="thumbNav">
-              <button :class="up"> <i class="fa-solid fa-chevron-up"></i> </button>
-              <button :class="down"> <i class="fa-solid fa-chevron-down"></i> </button>
+              <button  @click="nextSlide"> <i class="fa-solid fa-chevron-up"></i> </button>
+              <button  @click="previousSlide"> <i class="fa-solid fa-chevron-down"></i> </button>
             </div>
           </div>
         </div>
-        <!-- const slide = document.createElement("img");
-                const text = document.createElement("h2");
-                text.innerText = game.text;
-                slide.src = game.img;
-                slide.classList.add("slide");
-                text.classList.add("caption" , "bg-light" , "text-dark" , "p-3");
-
-                const thumb = document.createElement("img");
-                thumb.src = game.img;
-                thumb.classList.add("thumb");
-                slidesCont.appendChild(slide);
-                slidesCont.appendChild(text);
-                thumbsCont.appendChild(thumb);
-
-                if(images.indexOf(game) === 0)
-                {
-                    slide.classList.add("d-block");
-                    text.classList.add("d-block");
-                    thumb.classList.add("active");
-                } -->
       </main>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

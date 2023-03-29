@@ -10,6 +10,8 @@ const {createApp} = Vue;
 createApp({
     data(){
         return {
+            activeIndex : 0,
+            autoplay :null,
             images : [
                 {
                     image: 'img/01.webp',
@@ -43,76 +45,46 @@ createApp({
             slider : "slider d-flex",
             slides : "slides",
             slide : "slide",
-            thumbs : "thumbs",
-            thumb : "thumb d-flex flex-column justify-content-between",
-            thumbNav: "thumb-nav",
-            up : "up",
-            down : "down"
+            thumbs : "thumbs d-flex flex-column",
+            thumb : "thumb",
+            thumbNav: "thumb-nav d-flex flex-column justify-content-between"
         }
     },
     methods: {
-        // goUp() 
-        // {
-        //     const slides = document.querySelectorAll(".slide");
-        //     const texts = document.querySelectorAll("h2");
-        //     const thumbs =  document.querySelectorAll(".thumb");
-        
-        //     slides[currentIndex].classList.remove("d-block");
-        //     texts[currentIndex].classList.remove("d-block");
-        //     thumbs[currentIndex].classList.remove("active");
-        
-        //     if(currentIndex == images.length - 1)
-        //     {
-        //         currentIndex = 0;
-        //     }
-        //     else
-        //     {
-        //         currentIndex++;
-        //     }
-        //     slides[currentIndex].classList.add("d-block");
-        //     texts[currentIndex].classList.add("d-block");
-        //     thumbs[currentIndex].classList.add("active");
-        // },
-
-        // goDown() 
-        // {
-        //     const slides = document.querySelectorAll(".slide");
-        //     const texts = document.querySelectorAll("h2");
-        //     const thumbs =  document.querySelectorAll(".thumb");
-        
-        //     slides[currentIndex].classList.remove("d-block");
-        //     texts[currentIndex].classList.remove("d-block");
-        //     thumbs[currentIndex].classList.remove("active");
-        //     if(currentIndex == 0)
-        //     {
-        //         currentIndex = images.length - 1;
-        //     }
-        //     else
-        //     {
-        //         currentIndex--;
-        //     }
-        //     slides[currentIndex].classList.add("d-block");
-        //     texts[currentIndex].classList.add("d-block");
-        //     thumbs[currentIndex].classList.add("active");
-        // },
-
-        // play()
-        // {
-        //     autoplay = setInterval(goUp ,3000);
-        // },
-
-        // stop()
-        // {
-        //     clearInterval(autoplay);
-        // }
+        previousSlide()
+       {
+        if(this.activeIndex == this.images.length - 1)
+        {
+            this.activeIndex = 0;
+        }
+        else
+        {
+            this.activeIndex++;
+        }
+       },
+       nextSlide()
+       {
+        if(this.activeIndex == 0)
+        {
+            this.activeIndex = this.images.length - 1;
+        }
+        else
+        {
+            this.activeIndex--;
+        }
+       },
+       play()
+        {
+            this.autoplay = setInterval(this.nextSlide ,3000);
+        },
+        stop()
+        {
+            clearInterval(this.autoplay);
+        }  
     },
-
     mounted()
     {
-        // play()
-        //     {
-        //         autoplay = setInterval(goUp ,3000);
-        //     }
+        this.play();
     }
 }).mount('#app');
 
