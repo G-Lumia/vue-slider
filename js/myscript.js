@@ -1,10 +1,3 @@
-/* 
-    ` <div class="slide active">
-        <img  src="./img/01.webp" alt="img1">
-    </div> ` 
-*/
-
-// creazione del vettore di immagini
 const {createApp} = Vue;
 
 createApp({
@@ -46,11 +39,14 @@ createApp({
             slides : "slides",
             slide : "slide",
             thumbs : "thumbs d-flex flex-column",
-            thumb : "thumb",
-            thumbNav: "thumb-nav d-flex flex-column justify-content-between"
+            thumb : "thumb"
         }
     },
     methods: {
+        changeSlide(index)
+        {
+            this.activeIndex = index;
+        },
         previousSlide()
        {
         if(this.activeIndex == this.images.length - 1)
