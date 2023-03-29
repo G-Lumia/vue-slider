@@ -23,7 +23,7 @@
         <div @mouseover="stop" @mouseleave="play" :class ="slider">
           <div :class="slides">
              <!--  Viene visualizzata l'immagine corrispondente all'elemento dell'array images con indice activeIndex -->
-            <img :src = "'./' + images[activeIndex].image" alt="images[activeIndex].title" class="slide active">
+            <img v-for="(element, index) in images" :key ="index" class="slide" :class= "{'slide active' :activeIndex === index}" :src="'./' + element.image"  alt="element.title"> 
             <!--  il nome del gioco, che verrà visualizzato all'angolo della slide -->
             <h1 class="caption">{{images[activeIndex].title}}</h1>
           </div>
