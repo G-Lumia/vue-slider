@@ -1,0 +1,90 @@
+.wrapper{
+    width:100%;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    background: rgb(0,125,255);
+    background: linear-gradient(180deg, rgba(0,125,255,1) 0%, rgba(255,255,255,1) 100%);
+}
+
+/* l'intero carosello */
+.slider{
+    width: 750px;
+    height: 500px;
+    background-color: black;
+}
+
+/* sezione dedicata all'immagine selezionata */
+
+.slides{
+    width:80%;
+    height: 100%;
+    position: relative;
+}
+
+/* le propietà delle varie slide all'interno di slides */
+.slide 
+{
+    width: 100%;
+    height: 100%;
+    display:none;
+}
+
+h2
+{
+    display:none;
+}
+
+.caption
+{
+    position:absolute;
+    bottom: 0;
+    left:10%;
+    color:white;
+}
+
+/* sezione dedicata alle thumbnail */
+.thumbs{
+    width:20%;
+    height: 100%;
+    position:relative;
+}
+
+/* le propietà delle varie thumb all'interno di thumbs */
+.thumb{
+    width:100%;
+    height: 20%;
+    transition: 0.5s;
+}
+
+.thumb.active{
+    border: 4px solid white;
+    filter: brightness(1);
+}
+
+.thumb-nav{
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 10000;
+}
+
+button{
+    color:rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    margin: 5px 0 5px 0;
+    border: none;
+}
+
+.up{
+    top: 0;
+}
+
+.down{
+    bottom: 0;
+}
