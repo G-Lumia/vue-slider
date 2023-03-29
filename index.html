@@ -15,18 +15,20 @@
               Images Carousel
           </h1>
       </header>
-      <main :class="wrapper">
+      <main :class="wrapper" class="flex-column">
         <div @mouseover="stop" @mouseleave="play" :class ="slider">
           <div :class="slides">
             <img :src = "'./' + images[activeIndex].image" alt="images[activeIndex].title" class="slide active">
+            <h1 class="caption">{{images[activeIndex].title}}</h1>
           </div>
           <div :class="thumbs">
-            <img v-for="(element) in images" :class="thumb" :src="'./' + element.image"  alt="">
-            <div :class="thumbNav">
-              <button  @click="nextSlide"> <i class="fa-solid fa-chevron-up"></i> </button>
-              <button  @click="previousSlide"> <i class="fa-solid fa-chevron-down"></i> </button>
-            </div>
+            <img @click="changeSlide(index)" v-for="(element, index) in images" :key ="index" class="thumb" :class= "{'thumb active' :activeIndex === index}" :src="'./' + element.image"  alt="element.title">
+            <button  class="up" @click="nextSlide"> <i class="fa-solid fa-chevron-up"></i> </button>
+            <button  class="down" @click="previousSlide"> <i class="fa-solid fa-chevron-down"></i> </button>
           </div>
+        </div>
+        <div class="container w-50 my-3 bg-light text-center">
+          <p>{{images[activeIndex].text}}</p>
         </div>
       </main>
     </div>

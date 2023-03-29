@@ -1,9 +1,9 @@
 .wrapper{
     width:100%;
     height: 100vh;
+    margin-top:100px;
     display:flex;
-    justify-content: center;
-    align-items: center;
+    align-items : center;
 }
 
 body{
@@ -13,8 +13,8 @@ body{
 
 /* l'intero carosello */
 .slider{
-    width: 750px;
-    height: 500px;
+    width: 1000px;
+    height: 750px;
     background-color: black;
 }
 
@@ -38,18 +38,13 @@ body{
 {
     display:block;
 }
-
-h2
-{
-    display:none;
-}
-
 .caption
 {
     position:absolute;
     bottom: 0;
     left:10%;
     color:white;
+    background-color: black;
 }
 
 /* sezione dedicata alle thumbnail */
@@ -71,19 +66,15 @@ h2
     filter: brightness(1);
 }
 
-.thumb-nav{
-    height: 100%;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    z-index: 10000;
-}
-
 button{
     color:rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
     margin: 5px 0 5px 0;
     border: none;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 10000;
+    position:absolute;
 }
 
 .up{
@@ -92,4 +83,8 @@ button{
 
 .down{
     bottom: 0;
+}
+
+p{
+    font-size: 2rem;
 }
