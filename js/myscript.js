@@ -3,8 +3,11 @@ const {createApp} = Vue;
 createApp({
     data(){
         return {
+            //l'indice della slide attiva
             activeIndex : 0,
+            //variabile utilizzata per gestire l'evento di autoplay
             autoplay :null,
+            //il vettore di immagini utilizzato
             images : [
                 {
                     image: 'img/01.webp',
@@ -43,10 +46,12 @@ createApp({
         }
     },
     methods: {
+        //al click di una thumbnail, viene cambiato il valore di activeIndex con quello dell'immagine corrispondente
         changeSlide(index)
         {
             this.activeIndex = index;
         },
+        //si passa alla slide precedente
         previousSlide()
        {
         if(this.activeIndex == this.images.length - 1)
@@ -58,6 +63,7 @@ createApp({
             this.activeIndex++;
         }
        },
+       //si passa alla slide successiva
        nextSlide()
        {
         if(this.activeIndex == 0)
@@ -69,15 +75,18 @@ createApp({
             this.activeIndex--;
         }
        },
+       //ogni 3 secondi, si passa alla slide successiva
        play()
         {
             this.autoplay = setInterval(this.nextSlide ,3000);
         },
+        //la funzione play viene interrotta
         stop()
         {
             clearInterval(this.autoplay);
         }  
     },
+    //appena il sito viene caricato, l'autoplay entra già in funzione
     mounted()
     {
         this.play();

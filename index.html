@@ -10,27 +10,39 @@
   </head>
   <body>
     <div id="app">
+      <!--  inizio header -->
       <header :class="headerBox">
           <h1>
               Images Carousel
           </h1>
       </header>
+      <!--  fine header -->
+      <!--  inizio main -->
       <main :class="wrapper" class="flex-column">
+        <!-- quando il mouse viene passato sopra slider si ferma l'autoplay, quando esce riparte -->
         <div @mouseover="stop" @mouseleave="play" :class ="slider">
           <div :class="slides">
+             <!--  Viene visualizzata l'immagine corrispondente all'elemento dell'array images con indice activeIndex -->
             <img :src = "'./' + images[activeIndex].image" alt="images[activeIndex].title" class="slide active">
+            <!--  il nome del gioco, che verrà visualizzato all'angolo della slide -->
             <h1 class="caption">{{images[activeIndex].title}}</h1>
           </div>
+          <!-- le thumbnail delle immagini verranno stampate qua dentro -->
           <div :class="thumbs">
+            <!-- tutti gli elementi dell'array images vengono letti, per poi visualizzare le corrispondenti immagini all'interno di thumbs -->
+            <!-- inoltre al click di una thumbnail, viene visualizzata la slide corrispondente -->
             <img @click="changeSlide(index)" v-for="(element, index) in images" :key ="index" class="thumb" :class= "{'thumb active' :activeIndex === index}" :src="'./' + element.image"  alt="element.title">
+            <!-- al click dei due bottoni, viene cambiata slide -->
             <button  class="up" @click="nextSlide"> <i class="fa-solid fa-chevron-up"></i> </button>
             <button  class="down" @click="previousSlide"> <i class="fa-solid fa-chevron-down"></i> </button>
           </div>
         </div>
+        <!-- la descrizione del gioco, che varia in base alla slide attiva -->
         <div class="container w-50 my-3 bg-light text-center">
           <p>{{images[activeIndex].text}}</p>
         </div>
       </main>
+      <!--  fine main -->
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./js/myscript.js"></script>
